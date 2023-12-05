@@ -1,0 +1,14 @@
+name: Health
+on:
+  pull_request:
+    branches: [ main ]
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+jobs:
+  health:
+    uses: dart-lang/ecosystem/.github/workflows/health.yaml@aa4908f1c7d944f40931d052a93416e3dd7cede3
+    with:
+      coverage_web: true
+      checks: "breaking" # TODO(mosum):add "breaking" as soon as flutter pub get issue is resolved.
+      use-flutter: true
+    permissions:
+      pull-requests: write
